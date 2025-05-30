@@ -42,7 +42,7 @@ export default function Header () {
                   href={`#${link.id}`}
                   className={`flex w-[95%] h-5/6 items-center justify-center transition-all duration-200 rounded-full ${
                     activeSection === link.id
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-gradient-to-r from-green-600 to-green-400 text-white'
                       : 'hover:text-green-500'
                   }`}
                 >

@@ -18,7 +18,7 @@ export default function Hero() {
 
       {/* Texto */}
       <div className="w-5/6 sm:w-5/12 min-w-[250px]">
-        <h2 className="text-gray-800 text-5xl font-bold mb-4">Isaías Rubio</h2>
+        <h2 className="text-gray-800 text-5xl text-center sm:text-left font-bold mb-4">Isaías Rubio</h2>
         <p className="text-lg mt-2 text-gray-900 max-w-sm mb-4">
           Ut elit odio Nullam urna sit placerat sit sodales, amet, leo. dui consectetur urna. vehicula.
         </p>

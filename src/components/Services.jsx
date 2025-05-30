@@ -28,14 +28,15 @@ export default function Services() {
 }
 
 // Componente reutilizable para servicios
-// Componente reutilizable para servicios (estructura tipo card Bootstrap, con estilo Tailwind personalizado)
 function ServiceCard({ title, icon, children }) {
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-md w-full max-w-sm transition-transform hover:scale-105 hover:shadow-xl duration-300 ease-in-out">
+    <div className="bg-gray-700 border border-gray-700 rounded-lg overflow-hidden shadow-md w-full max-w-sm transition-transform hover:scale-105 hover:shadow-xl duration-300 ease-in-out">
       
-      {/* Parte superior simulando la imagen */}
-      <div className="bg-gray-700 h-40 flex items-center justify-center text-green-400 text-5xl">
-        {icon}
+      {/* Parte superior */}
+      <div className="bg-[radial-gradient(circle,_rgba(34,197,94,0.2)_0%,_rgba(17,24,39,1)_30%)] py-10 flex items-center justify-center">
+        <div className="w-16 h-16 flex items-center justify-center rounded-full text-green-400 text-3xl transition-transform duration-300 group-hover:scale-110">
+          {icon}
+        </div>
       </div>
 
       {/* Parte inferior con contenido */}
