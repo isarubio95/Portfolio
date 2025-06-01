@@ -7,7 +7,7 @@ export default function Hero() {
     <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 mx-auto h-screen flex flex-col sm:flex-row justify-center items-center flex-wrap gap-6">
       {/* Imagen */}
       <div className='w-5/12 min-w-[307px] flex justify-end'>
-        <div className='h-60 bg-gray-700 w-60 flex justify-center items-end rounded-full'>
+        <div className='h-64 bg-gray-700 w-64 flex justify-center items-end rounded-full'>
           <img
             src={profilePic}
             alt="Isaías Rubio"
@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="w-5/6 sm:w-5/12 min-w-[250px]">
         <h2 className="text-gray-800 text-5xl text-center sm:text-left font-bold mb-4">Isaías Rubio</h2>
         <p className="text-lg mt-2 text-gray-900 max-w-sm mb-4">
-          Ut elit odio Nullam urna sit placerat sit sodales, amet, leo. dui consectetur urna. vehicula.
+          Técnico superior en Desarrollo de Aplicaciones Web. Abierto a nuevas contrataciones.
         </p>
 
         {/* Ubicación */}

@@ -9,12 +9,13 @@ export default function Contact() {
     const form = formRef.current
     if (!form.checkValidity()) {
       e.preventDefault()
-      setSubmitted(true)
-    } else {
-      setSubmitted(true)
-      // Aquí podrías enviar los datos
+    }
+    setSubmitted(true)
+    if (form.checkValidity()) {
       alert('Formulario enviado correctamente ✅')
       form.reset()
+      e.preventDefault()
+      setSubmitted(false)
     }
   }
 
@@ -31,6 +32,20 @@ export default function Contact() {
     peer-[&:not(:placeholder-shown)]:top-[-30px] peer-[&:not(:placeholder-shown)]:text-sm
     ${!submitted ? 'text-gray-600' : fieldValid ? 'text-green-600' : 'text-red-600'}
   `
+
+  const errorText = {
+    name: 'El nombre es obligatorio.',
+    email: 'Introduce un email válido.',
+    phone: 'Introduce un teléfono válido (ej. +34 600 000 000).',
+    message: 'El mensaje es obligatorio.',
+  }
+
+  const getError = (field) => {
+    const el = formRef.current?.[field]
+    if (!el) return false
+    if (field === 'phone' && !el.value) return false // optional
+    return submitted && !el.validity.valid
+  }
 
   return (
     <section id="contacto" className="bg-gray-100 py-20">
@@ -49,6 +64,7 @@ export default function Contact() {
               required
             />
             <label htmlFor="name" className={getLabelClass(formRef.current?.name?.validity?.valid)}>Nombre</label>
+            {getError('name') && <p className="text-red-600 text-sm mt-1">{errorText.name}</p>}
           </div>
 
           {/* Email y Teléfono */}
@@ -63,6 +79,7 @@ export default function Contact() {
                 required
               />
               <label htmlFor="email" className={getLabelClass(formRef.current?.email?.validity?.valid)}>Email</label>
+              {getError('email') && <p className="text-red-600 text-sm mt-1">{errorText.email}</p>}
             </div>
 
             <div className="relative">
@@ -71,7 +88,7 @@ export default function Contact() {
                 name="phone"
                 type="tel"
                 placeholder="+34 600 000 000"
-                pattern="^(\+34\s?)?(\d{3}[\s.-]?){2}\d{3}$"
+                pattern="^(\\+34\\s?)?(\\d{3}[\\s.-]?){2}\\d{3}$"
                 className={getInputClass(
                   !formRef.current?.phone?.value ? true : formRef.current?.phone?.validity?.valid
                 )}
@@ -79,6 +96,7 @@ export default function Contact() {
               <label htmlFor="phone" className={getLabelClass(
                 !formRef.current?.phone?.value ? true : formRef.current?.phone?.validity?.valid
               )}>Teléfono (opcional)</label>
+              {getError('phone') && <p className="text-red-600 text-sm mt-1">{errorText.phone}</p>}
             </div>
           </div>
 
@@ -93,6 +111,7 @@ export default function Contact() {
               required
             />
             <label htmlFor="message" className={getLabelClass(formRef.current?.message?.validity?.valid)}>Mensaje</label>
+            {getError('message') && <p className="text-red-600 text-sm mt-1">{errorText.message}</p>}
           </div>
 
           {/* Botón */}
