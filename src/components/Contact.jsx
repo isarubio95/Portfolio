@@ -3,26 +3,43 @@ import { FiSend } from 'react-icons/fi'
 
 export default function Contact() {
   const formRef = useRef(null)
+  const [touched, setTouched] = useState({})
   const [submitted, setSubmitted] = useState(false)
+
+  const handleBlur = (e) => {
+    const { name } = e.target
+    setTouched(prev => ({ ...prev, [name]: true }))
+  }
+
+  const cleanPhone = (value) => value.replace(/[\s.-]/g, '')
 
   const handleSubmit = (e) => {
     const form = formRef.current
-    if (!form.checkValidity()) {
-      e.preventDefault()
-    }
+    e.preventDefault()
+
+    // Limpiar teléfono antes de validar
+    form.phone.value = cleanPhone(form.phone.value)
+
     setSubmitted(true)
-    if (form.checkValidity()) {
+
+    if (form.checkValidity() && validatePhone(form.phone.value)) {
       alert('Formulario enviado correctamente ✅')
       form.reset()
-      e.preventDefault()
+      setTouched({})
       setSubmitted(false)
     }
+  }
+
+  const validatePhone = (value) => {
+    if (!value) return true
+    const regex = /^(\+34\s?)?(\d{3}[\s.-]?\d{3}[\s.-]?\d{3})$/
+    return regex.test(value)
   }
 
   const getInputClass = (fieldValid) => `
     peer w-full bg-gray-200 rounded-xl p-3 outline-none text-black placeholder-transparent
     shadow-inner transition-all duration-200 ease-in-out ring-1
-    ${!submitted ? 'ring-gray-500' : fieldValid ? 'ring-2 ring-green-500' : 'ring-2 ring-red-500'}
+    ${fieldValid == null ? 'ring-gray-500' : fieldValid ? 'ring-2 ring-green-500' : 'ring-2 ring-red-500'}
   `
 
   const getLabelClass = (fieldValid) => `
@@ -30,21 +47,38 @@ export default function Contact() {
     peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500
     peer-focus:top-[-30px] peer-focus:text-sm
     peer-[&:not(:placeholder-shown)]:top-[-30px] peer-[&:not(:placeholder-shown)]:text-sm
-    ${!submitted ? 'text-gray-600' : fieldValid ? 'text-green-600' : 'text-red-600'}
+    ${fieldValid == null ? 'text-gray-600' : fieldValid ? 'text-green-600' : 'text-red-600'}
   `
 
   const errorText = {
-    name: 'El nombre es obligatorio.',
-    email: 'Introduce un email válido.',
-    phone: 'Introduce un teléfono válido (ej. +34 600 000 000).',
+    name: 'Introduce un nombre válido (ej. Juan Rubio)',
+    email: 'Introduce un email válido (ej. tucorreo@gmail.com)',
+    phone: 'Introduce un teléfono válido (ej. +34 600 000 000 o 600-000-000)',
     message: 'El mensaje es obligatorio.',
   }
 
   const getError = (field) => {
     const el = formRef.current?.[field]
     if (!el) return false
-    if (field === 'phone' && !el.value) return false // optional
-    return submitted && !el.validity.valid
+
+    if (field === 'phone') {
+      if (!el.value) return false // ⬅️ importante: si está vacío, no hay error
+      return touched[field] && !validatePhone(el.value)
+    }
+
+    return touched[field] && !el.validity.valid
+  }
+
+  const isValid = (field) => {
+    const el = formRef.current?.[field]
+    if (!el) return null
+
+    if (field === 'phone') {
+      if (!el.value) return null // ⬅️ no marcamos ni válido ni inválido si está vacío
+      return touched[field] ? validatePhone(el.value) : null
+    }
+
+    return touched[field] ? el.validity.valid : null
   }
 
   return (
@@ -59,11 +93,14 @@ export default function Contact() {
               id="name"
               name="name"
               type="text"
+              pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+              autocomplete="name"
               placeholder="Tu nombre"
-              className={getInputClass(formRef.current?.name?.validity?.valid)}
+              className={getInputClass(isValid('name'))}
               required
+              onBlur={handleBlur}
             />
-            <label htmlFor="name" className={getLabelClass(formRef.current?.name?.validity?.valid)}>Nombre</label>
+            <label htmlFor="name" className={getLabelClass(isValid('name'))}>Nombre</label>
             {getError('name') && <p className="text-red-600 text-sm mt-1">{errorText.name}</p>}
           </div>
 
@@ -74,11 +111,13 @@ export default function Contact() {
                 id="email"
                 name="email"
                 type="email"
+                autocomplete="email"
                 placeholder="tucorreo@ejemplo.com"
-                className={getInputClass(formRef.current?.email?.validity?.valid)}
+                className={getInputClass(isValid('email'))}
                 required
+                onBlur={handleBlur}
               />
-              <label htmlFor="email" className={getLabelClass(formRef.current?.email?.validity?.valid)}>Email</label>
+              <label htmlFor="email" className={getLabelClass(isValid('email'))}>Email</label>
               {getError('email') && <p className="text-red-600 text-sm mt-1">{errorText.email}</p>}
             </div>
 
@@ -87,15 +126,12 @@ export default function Contact() {
                 id="phone"
                 name="phone"
                 type="tel"
+                autocomplete="tel"
                 placeholder="+34 600 000 000"
-                pattern="^(\\+34\\s?)?(\\d{3}[\\s.-]?){2}\\d{3}$"
-                className={getInputClass(
-                  !formRef.current?.phone?.value ? true : formRef.current?.phone?.validity?.valid
-                )}
+                className={getInputClass(isValid('phone'))}
+                onBlur={handleBlur}
               />
-              <label htmlFor="phone" className={getLabelClass(
-                !formRef.current?.phone?.value ? true : formRef.current?.phone?.validity?.valid
-              )}>Teléfono (opcional)</label>
+              <label htmlFor="phone" className={getLabelClass(isValid('phone'))}>Teléfono (opcional)</label>
               {getError('phone') && <p className="text-red-600 text-sm mt-1">{errorText.phone}</p>}
             </div>
           </div>
@@ -106,11 +142,13 @@ export default function Contact() {
               id="message"
               name="message"
               rows={4}
+              autocomplete="off"
               placeholder="Escribe tu mensaje…"
-              className={`${getInputClass(formRef.current?.message?.validity?.valid)} resize-none`}
+              className={`${getInputClass(isValid('message'))} resize-none`}
               required
+              onBlur={handleBlur}
             />
-            <label htmlFor="message" className={getLabelClass(formRef.current?.message?.validity?.valid)}>Mensaje</label>
+            <label htmlFor="message" className={getLabelClass(isValid('message'))}>Mensaje</label>
             {getError('message') && <p className="text-red-600 text-sm mt-1">{errorText.message}</p>}
           </div>
 

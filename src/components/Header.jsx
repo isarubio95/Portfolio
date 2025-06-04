@@ -39,8 +39,11 @@ export default function Header () {
             {links.map((link) => (
               <li key={link.id} className="flex h-full w-full items-center justify-center">
                 <a
-                  href={`#${link.id}`}
-                  className={`flex w-[95%] h-5/6 items-center justify-center transition-all duration-200 rounded-full ${
+                  onClick={() => {
+                    const seccion = document.getElementById(`${link.id}`);
+                    seccion?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`flex w-[95%] h-5/6 items-center justify-center cursor-pointer transition-all duration-200 rounded-full ${
                     activeSection === link.id
                       ? 'bg-gradient-to-r from-green-600 to-green-400 text-white'
                       : 'hover:text-green-500'

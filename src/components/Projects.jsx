@@ -5,7 +5,7 @@ export default function Projects() {
     { id: 3, title: 'Fichajes', image: '/appFichar.png', tech: ['PHP', 'SQL'] },
     { id: 4, title: 'Manos Al Barro', image: '/manosAlBarro.png', tech: ['HTML', 'CSS', 'JS', 'BootStrap'] },
     { id: 5, title: 'PokéGochi', image: '/pokeGochi.png', tech: ['HTML', 'CSS', 'JS', 'JQuery'] },
-    { id: 6, title: 'Fichajes', image: '/appFichar.png', tech: ['PHP'] },
+    { id: 6, title: 'Freedom', image: '/comingSoon.png', tech: ['React', 'Next.js', 'Node'] },
   ]
 
   return (

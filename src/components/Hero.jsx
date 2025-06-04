@@ -31,26 +31,37 @@ export default function Hero() {
 
         {/* Iconos sociales */}
         <div className="mt-4 flex items-center gap-4 text-xl text-gray-700">
-          <a href="https://github.com/tu_usuario" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
+          <a href="https://github.com/isarubio95" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/tu_usuario" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
+          <a href="https://www.linkedin.com/in/isa%C3%ADas-rubio-hern%C3%A1ndez-539085139/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
             <FaLinkedin />
           </a>
-          <a href="https://linkedin.com/in/tu_usuario" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
-            <FaFileAlt  />
-          </a>
-          <a href="https://linkedin.com/in/tu_usuario" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
+          <a href="https://www.figma.com/@isaiasrubio" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
             <FaFigma  />
           </a>
         </div>
 
-        {/* Botón */}
-        <button className="mt-4 flex items-center gap-1 bg-green-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
-            hover:bg-green-600 hover:shadow-xl hover:scale-105 
-            active:scale-95 active:shadow-inner">
+        {/* Botones */}
+        <div className='flex flex-wrap'>
+          <button
+            className="mt-4 flex items-center gap-1 mr-3 bg-green-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
+                      hover:bg-green-600 hover:shadow-xl hover:scale-105 
+                      active:scale-95 active:shadow-inner"
+            onClick={() => {
+              const seccion = document.getElementById('contacto');
+              seccion?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             Contactar <FiArrowUpRight className="text-lg transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-        </button>
+          </button>
+          <button className="mt-4 flex items-center gap-1 bg-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
+              hover:bg-blue-600 hover:shadow-xl hover:scale-105 
+              active:scale-95 active:shadow-inner">
+              Descargar CV <FaFileAlt className="text-md transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ml-1" />
+          </button>
+        </div>
+        
 
       </div>
     </section>
