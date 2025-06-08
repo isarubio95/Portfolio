@@ -1,6 +1,6 @@
 <?php
 // CONFIGURA ESTO:
-$destinatario = "tucorreo@ejemplo.com"; // ← cámbialo por tu email real
+$destinatario = "portfolio@rioja.dev"; // ← cámbialo por tu email real
 $asunto = "Mensaje desde tu formulario";
 
 // RECOGER DATOS
