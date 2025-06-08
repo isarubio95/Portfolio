@@ -48,7 +48,7 @@ $headers .= "Reply-To: $email\r\n";
 
 // ENVÍO
 if (mail($destinatario, $asunto, $cuerpo, $headers)) {
-  echo "Mensaje enviado correctamente ✅";
+  echo "Mensaje enviado correctamente";
 } else {
   http_response_code(500);
   echo "No se pudo enviar el mensaje.";
