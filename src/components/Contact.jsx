@@ -1,10 +1,12 @@
 import { useState, useRef } from 'react'
 import { FiSend } from 'react-icons/fi'
+import toast from 'react-hot-toast'
 
 export default function Contact() {
   const formRef = useRef(null)
   const [touched, setTouched] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleBlur = (e) => {
     const { name } = e.target
@@ -13,20 +15,42 @@ export default function Contact() {
 
   const cleanPhone = (value) => value.replace(/[\s.-]/g, '')
 
-  const handleSubmit = (e) => {
-    const form = formRef.current
+  const handleSubmit = async (e) => {
     e.preventDefault()
-
-    // Limpiar teléfono antes de validar
+    const form = formRef.current
     form.phone.value = cleanPhone(form.phone.value)
-
     setSubmitted(true)
 
-    if (form.checkValidity() && validatePhone(form.phone.value)) {
-      alert('Formulario enviado correctamente ✅')
+    if (!form.checkValidity() || !validatePhone(form.phone.value)) return
+
+    setLoading(true)
+
+    const formData = new URLSearchParams({
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      message: form.message.value,
+      website: form.website.value
+    })
+
+    try {
+      const res = await fetch('https://rioja.dev/enviar.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+      })
+
+      const msg = await res.text()
+      if (!res.ok) throw new Error(msg)
+
+      toast.success(msg)
       form.reset()
       setTouched({})
       setSubmitted(false)
+    } catch (err) {
+      toast.error(err.message || 'Hubo un error al enviar el formulario')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -62,24 +86,26 @@ export default function Contact() {
     if (!el) return false
 
     if (field === 'phone') {
-      if (!el.value) return false // ⬅️ importante: si está vacío, no hay error
-      return touched[field] && !validatePhone(el.value)
+      if (!el.value) return false
+      return (touched[field] || submitted) && !validatePhone(el.value)
     }
 
-    return touched[field] && !el.validity.valid
+    return (touched[field] || submitted) && !el.validity.valid
   }
+
 
   const isValid = (field) => {
     const el = formRef.current?.[field]
     if (!el) return null
 
     if (field === 'phone') {
-      if (!el.value) return null // ⬅️ no marcamos ni válido ni inválido si está vacío
-      return touched[field] ? validatePhone(el.value) : null
+      if (!el.value) return null
+      return (touched[field] || submitted) ? validatePhone(el.value) : null
     }
 
-    return touched[field] ? el.validity.valid : null
+    return (touched[field] || submitted) ? el.validity.valid : null
   }
+
 
   return (
     <section id="contacto" className="bg-gray-100 py-20">
@@ -90,11 +116,17 @@ export default function Contact() {
           {/* Nombre */}
           <div className="relative">
             <input
+              type="text"
+              name="website"
+              className="hidden"
+              autoComplete="off"
+            />
+            <input
               id="name"
               name="name"
               type="text"
               pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
-              autocomplete="name"
+              autoComplete="name"
               placeholder="Tu nombre"
               className={getInputClass(isValid('name'))}
               required
@@ -111,7 +143,7 @@ export default function Contact() {
                 id="email"
                 name="email"
                 type="email"
-                autocomplete="email"
+                autoComplete="email"
                 placeholder="tucorreo@ejemplo.com"
                 className={getInputClass(isValid('email'))}
                 required
@@ -126,7 +158,7 @@ export default function Contact() {
                 id="phone"
                 name="phone"
                 type="tel"
-                autocomplete="tel"
+                autoComplete="tel"
                 placeholder="+34 600 000 000"
                 className={getInputClass(isValid('phone'))}
                 onBlur={handleBlur}
@@ -142,7 +174,7 @@ export default function Contact() {
               id="message"
               name="message"
               rows={4}
-              autocomplete="off"
+              autoComplete="off"
               placeholder="Escribe tu mensaje…"
               className={`${getInputClass(isValid('message'))} resize-none`}
               required
@@ -156,13 +188,20 @@ export default function Contact() {
           <div className="group inline-block mx-auto">
             <button
               type="submit"
-              className="bg-green-500 text-white font-medium px-6 py-2 rounded-full shadow-lg
-              transition-all duration-300 hover:bg-green-600 hover:shadow-xl hover:scale-105
-              active:scale-95 active:shadow-inner flex items-center gap-2"
+              disabled={loading}
+              className={`px-6 py-2 rounded-full shadow-lg font-medium flex items-center gap-2 transition-all duration-300
+                ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600 hover:shadow-xl hover:scale-105 active:scale-95 active:shadow-inner'}
+                text-white`}
             >
-              Enviar
-              <FiSend className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              {loading ? (
+                <span className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></span>
+              ) : (
+                <>
+                  Enviar <FiSend className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </>
+              )}
             </button>
+
           </div>
         </form>
       </div>

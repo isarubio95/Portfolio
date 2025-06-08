@@ -7,6 +7,8 @@ import Projects from './components/Projects'
 import Stack from './components/Stack'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { Toaster } from 'react-hot-toast'
+
 
 function App() {
   // Limpiar la URL si viene con parámetros (como ?name=)
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-center" />
       <Header />
       <main>
         <Hero />

@@ -1,4 +1,3 @@
-import profilePic from '../assets/profile.jpg'
 import { FaMapMarkerAlt, FaGithub, FaLinkedin, FaFileAlt, FaFigma } from 'react-icons/fa'
 import { FiArrowUpRight } from 'react-icons/fi'
 
@@ -9,7 +8,7 @@ export default function Hero() {
       <div className='w-5/12 min-w-[307px] flex justify-end'>
         <div className='h-64 bg-gray-700 w-64 flex justify-center items-end rounded-full'>
           <img
-            src={profilePic}
+            src="profile.jpg"
             alt="Isaías Rubio"
             className="h-56 w-56 rounded-full object-cover"
           />
