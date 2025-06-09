@@ -1,10 +1,10 @@
 export default function Projects() {
   const projects = [
     { id: 1, title: '37Grams.', image: '/37grams.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://thirtysevengrams.com/' },
-    { id: 2, title: 'Cartas Pokemon', image: '/cartasPokemon.png', tech: ['HTML', 'CSS', 'JS'] },
-    { id: 3, title: 'Fichajes', image: '/appFichar.png', tech: ['PHP', 'SQL'] },
-    { id: 4, title: 'Manos Al Barro', image: '/manosAlBarro.png', tech: ['HTML', 'CSS', 'JS', 'BootStrap'] },
-    { id: 5, title: 'PokéGochi', image: '/pokeGochi.png', tech: ['HTML', 'CSS', 'JS', 'JQuery'] },
+    { id: 2, title: 'Cartas Pokemon', image: '/cartasPokemon.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://github.com/isarubio95/Cartas-Pokemon'  },
+    { id: 3, title: 'Fichajes', image: '/appFichar.png', tech: ['PHP', 'SQL'], link: 'https://github.com/isarubio95/App-Fichar'  },
+    { id: 4, title: 'Manos Al Barro', image: '/manosAlBarro.png', tech: ['HTML', 'CSS', 'JS', 'BootStrap'], link: 'https://github.com/isarubio95/Manos-al-Barro'  },
+    { id: 5, title: 'PokéGochi', image: '/pokeGochi.png', tech: ['HTML', 'CSS', 'JS', 'JQuery'], link: 'https://github.com/isarubio95/PokeGochi'  },
     { id: 6, title: 'Freedom', image: '/comingSoon.png', tech: ['React', 'Next.js', 'Node'] },
   ]
 

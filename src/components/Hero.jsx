@@ -3,9 +3,9 @@ import { FiArrowUpRight } from 'react-icons/fi'
 
 export default function Hero() {
   return (
-    <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 mx-auto h-screen flex flex-col sm:flex-row justify-center items-center flex-wrap gap-6">
+    <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 h-[95vh] sm:h-screen flex flex-col sm:flex-row justify-center items-center flex-wrap gap-6">
       {/* Imagen */}
-      <div className='w-5/12 min-w-[307px] flex justify-end'>
+      <div className='w-5/12 min-w-[307px] flex justify-center md:justify-end'>
         <div className='h-64 bg-gray-700 w-64 flex justify-center items-end rounded-full'>
           <img
             src="profile.jpg"
@@ -30,13 +30,13 @@ export default function Hero() {
 
         {/* Iconos sociales */}
         <div className="mt-4 flex items-center gap-4 text-xl text-gray-700">
-          <a href="https://github.com/isarubio95" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
+          <a href="https://github.com/isarubio95" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors" aria-label="Visitar mi perfil de GitHub">
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/isa%C3%ADas-rubio-hern%C3%A1ndez-539085139/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
+          <a href="https://www.linkedin.com/in/isa%C3%ADas-rubio-hern%C3%A1ndez-539085139/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors" aria-label="Visitar mi perfil de LinkedIn">
             <FaLinkedin />
           </a>
-          <a href="https://www.figma.com/@isaiasrubio" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors">
+          <a href="https://www.figma.com/@isaiasrubio" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700 transition-colors" aria-label="Visitar mi perfil de Figma">
             <FaFigma  />
           </a>
         </div>
@@ -51,14 +51,20 @@ export default function Hero() {
               const seccion = document.getElementById('contacto');
               seccion?.scrollIntoView({ behavior: 'smooth' });
             }}
+            aria-label="Ir al sección de contacto"
           >
             Contactar <FiArrowUpRight className="text-lg transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </button>
-          <button className="mt-4 flex items-center gap-1 bg-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
-              hover:bg-blue-600 hover:shadow-xl hover:scale-105 
-              active:scale-95 active:shadow-inner">
-              Descargar CV <FaFileAlt className="text-md transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ml-1" />
-          </button>
+          <a
+            href="/CV-Isaias-Rubio.pdf"
+            download
+            className="mt-4 flex items-center gap-1 bg-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
+                      hover:bg-blue-600 hover:shadow-xl hover:scale-105 
+                      active:scale-95 active:shadow-inner"
+            aria-label="Descargar currículum"
+          >
+            Descargar CV <FaFileAlt className="text-md transition-transform duration-300 ml-1" />
+          </a>
         </div>
         
 

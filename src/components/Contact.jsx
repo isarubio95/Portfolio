@@ -192,6 +192,7 @@ export default function Contact() {
               className={`px-6 py-2 rounded-full shadow-lg font-medium flex items-center gap-2 transition-all duration-300
                 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600 hover:shadow-xl hover:scale-105 active:scale-95 active:shadow-inner'}
                 text-white`}
+              aria-label="Enviar formulario"
             >
               {loading ? (
                 <span className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></span>
