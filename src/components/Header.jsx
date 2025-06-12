@@ -58,7 +58,7 @@ export default function Header () {
           {/* ───── Hamburguesa ───── */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="sm:hidden text-2xl text-black"
+            className="sm:hidden text-3xl text-black"
           >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>

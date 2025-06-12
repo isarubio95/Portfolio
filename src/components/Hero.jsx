@@ -3,22 +3,22 @@ import { FiArrowUpRight } from 'react-icons/fi'
 
 export default function Hero() {
   return (
-    <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 h-[95vh] sm:h-screen flex flex-col sm:flex-row justify-center items-center flex-wrap gap-6">
+    <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 h-[85vh] sm:h-screen flex flex-col sm:flex-row justify-center items-center sm:gap-6 gap-4 ">
       {/* Imagen */}
-      <div className='w-5/12 min-w-[307px] flex justify-center md:justify-end'>
-        <div className='h-64 bg-gray-700 w-64 flex justify-center items-end rounded-full'>
+      <div className='w-5/12 sm:min-w-[307px] short:hidden flex justify-center md:justify-end'>
+        <div className='sm:h-64 sm:w-64 bg-gray-700 aspect-square flex justify-center sm:items-end rounded-full'>
           <img
             src="profile.jpg"
             alt="Isaías Rubio"
-            className="h-56 w-56 rounded-full object-cover"
+            className="sm:h-56 sm:w-56 rounded-full object-cover"
           />
         </div>
       </div>
 
       {/* Texto */}
       <div className="w-5/6 sm:w-5/12 min-w-[250px]">
-        <h2 className="text-gray-800 text-5xl text-center sm:text-left font-bold mb-4">Isaías Rubio</h2>
-        <p className="text-lg mt-2 text-gray-900 max-w-sm mb-4">
+        <h2 className="text-gray-800 text-4xl sm:text-5xl text-center sm:text-left font-bold mb-4">Isaías Rubio</h2>
+        <p className="text-base sm:text-lg mt-2 text-gray-900 max-w-sm mb-4">
           Técnico superior en Desarrollo de Aplicaciones Web. Abierto a nuevas contrataciones.
         </p>
 

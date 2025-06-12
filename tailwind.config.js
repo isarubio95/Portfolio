@@ -10,6 +10,11 @@ export default {
         custom: '0 8px 20px rgba(0, 0, 0, 0.5)',
         inset: 'inset 0 1px 8px rgba(0, 0, 0, 0.1)',
       },
+      screens: {
+        'short': { 'raw': '(max-height: 600px)' },
+        'medium': { 'raw': '(max-height: 820px)' },
+        'tall': { 'raw': '(min-height: 900px)' }
+      }
     },
   },
   plugins: [],
