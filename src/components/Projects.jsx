@@ -1,11 +1,11 @@
 export default function Projects() {
   const projects = [
-    { id: 1, title: 'Shamrock', desc: 'Landing page para academia de inglés en Logroño. Media de 97 en Lighthouse.', image: '/shamrock.png', tech: ['HTML', 'CSS', 'JS', 'PHP'], link: 'https://shamrockenglishsolutions.es/' },
+    { id: 1, title: 'Impulso', desc: 'Tienda online para empresa de Logroño. Con las últimas tecnologías en desarrollo web.', image: '/impulso.png', tech: ['Nextjs', 'Tailwind', 'Supabase'], link: 'https://impulso-kappa.vercel.app/' },
     { id: 2, title: '37Grams.', desc: 'Página para un profesor de inglés, con temática en blanco y negro.', image: '/37grams.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://thirtysevengrams.com/' },
-    { id: 3, title: 'Cartas Pokemon', desc: 'Minijuego de cartas pokémon recogidas de la PokéAPI.', image: '/cartasPokemon.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://github.com/isarubio95/Cartas-Pokemon' },
+    { id: 3, title: 'Shamrock', desc: 'Landing page para academia de inglés en Logroño. Media de 97 en Lighthouse.', image: '/shamrock.png', tech: ['HTML', 'CSS', 'JS', 'PHP'], link: 'https://shamrockenglishsolutions.es/' },
+    { id: 4, title: 'Cartas Pokemon', desc: 'Minijuego de cartas pokémon recogidas de la PokéAPI.', image: '/cartasPokemon.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://github.com/isarubio95/Cartas-Pokemon' },
     { id: 4, title: 'Fichajes', desc: 'Aplicación web para fichar entradas y salidas de los empleados y generar informes.', image: '/appFichar.png', tech: ['PHP', 'SQL'], link: 'https://github.com/isarubio95/App-Fichar' },
-    { id: 5, title: 'Manos Al Barro', desc: 'Trabajo para DAW, centrado en la accesibilidad, navegabilidad y usabilidad.', image: '/manosAlBarro.png', tech: ['HTML', 'CSS', 'JS', 'BootStrap'], link: 'https://github.com/isarubio95/Manos-al-Barro' },
-    { id: 6, title: 'PokéGochi', desc: 'Minijuego que usa la PokéAPI, proyecto para aprender JQuery.', image: '/pokeGochi.png', tech: ['HTML', 'CSS', 'JS', 'JQuery'], link: 'https://github.com/isarubio95/PokeGochi' },
+    { id: 6, title: 'Manos Al Barro', desc: 'Trabajo para DAW, centrado en la accesibilidad, navegabilidad y usabilidad.', image: '/manosAlBarro.png', tech: ['HTML', 'CSS', 'JS', 'BootStrap'], link: 'https://github.com/isarubio95/Manos-al-Barro' },
   ]
 
   return (
@@ -35,9 +35,11 @@ function ProjectCard({ title, desc, image, tech, link }) {
     SQL: 'bg-purple-800',
     BootStrap: 'bg-purple-600',
     JQuery: 'bg-sky-500',
+    Nextjs: 'bg-gray-700',
     React: 'bg-cyan-400 text-black',
     Laravel: 'bg-red-600',
-    Figma: 'bg-pink-500',
+    Tailwind: 'bg-teal-600',
+    Supabase: 'bg-emerald-600',
   }
 
   return (
