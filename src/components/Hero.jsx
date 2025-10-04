@@ -44,8 +44,8 @@ export default function Hero() {
         {/* Botones */}
         <div className='flex flex-wrap'>
           <button
-            className="mt-4 flex items-center gap-1 mr-3 bg-green-500 text-white px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-300 
-                      hover:bg-green-600 hover:shadow-xl hover:scale-105
+            className="mt-4 flex items-center gap-1 mr-3 bg-green-600 text-white px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-300 
+                      hover:bg-green-600/90 hover:shadow-xl hover:scale-105
                       active:scale-95 active:shadow-inner"
             onClick={() => {
               const seccion = document.getElementById('contacto');
@@ -59,7 +59,7 @@ export default function Hero() {
             href="/CV-Isaias-Rubio.pdf"
             download
             className="mt-4 flex items-center gap-1 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-300 
-                      hover:bg-blue-700 hover:shadow-xl hover:scale-105 
+                      hover:bg-blue-600/90 hover:shadow-xl hover:scale-105 
                       active:scale-95 active:shadow-inner"
             aria-label="Descargar currículum"
           >
