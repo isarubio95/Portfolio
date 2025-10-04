@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 h-[85vh] sm:h-screen flex flex-col sm:flex-row justify-center items-center sm:gap-6 gap-4 ">
       {/* Imagen */}
-      <div className='w-5/12 sm:min-w-[307px] short:hidden flex justify-center md:justify-end'>
+      <div className='max-w-5xl mx-auto sm:mx-0 w-5/6 sm:w-5/12 min-w-[307px] short:hidden flex justify-center md:justify-end'>
         <div className='sm:h-64 sm:w-64 bg-gray-700 aspect-square flex justify-center sm:items-end rounded-full'>
           <img
             src="profile.jpg"
@@ -44,8 +44,8 @@ export default function Hero() {
         {/* Botones */}
         <div className='flex flex-wrap'>
           <button
-            className="mt-4 flex items-center gap-1 mr-3 bg-green-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
-                      hover:bg-green-600 hover:shadow-xl hover:scale-105 
+            className="mt-4 flex items-center gap-1 mr-3 bg-green-500 text-white px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-300 
+                      hover:bg-green-600 hover:shadow-xl hover:scale-105
                       active:scale-95 active:shadow-inner"
             onClick={() => {
               const seccion = document.getElementById('contacto');
@@ -58,8 +58,8 @@ export default function Hero() {
           <a
             href="/CV-Isaias-Rubio.pdf"
             download
-            className="mt-4 flex items-center gap-1 bg-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-lg transition-all duration-300 
-                      hover:bg-blue-600 hover:shadow-xl hover:scale-105 
+            className="mt-4 flex items-center gap-1 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow-lg transition-all duration-300 
+                      hover:bg-blue-700 hover:shadow-xl hover:scale-105 
                       active:scale-95 active:shadow-inner"
             aria-label="Descargar currículum"
           >

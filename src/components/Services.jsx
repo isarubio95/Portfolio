@@ -3,7 +3,7 @@ import { FaPaintBrush , FaCode, FaWallet } from 'react-icons/fa'
 export default function Services() {
   return (
     <section id='servicios' className="bg-gray-800 text-white py-20">
-      <div className="w-5/6 mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl font-bold">Mis <span className='text-green-400'>Servicios</span></h2>
         <p className="mt-2 text-gray-300 max-w-xl mx-auto">
           Aquí están algunos de los servicios que ofrezco para ayudarte a mejorar tu presencia online.

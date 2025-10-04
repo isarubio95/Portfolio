@@ -30,7 +30,7 @@ export default function Stack () {
 
   return (
     <section id="stack" className="bg-gray-800 py-20 text-white">
-      <div className="w-5/6 mx-auto text-center relative">
+      <div className="max-w-5xl mx-auto text-center relative">
         <h2 className="text-3xl font-bold">
           Stack <span className="text-green-500">Tecnológico</span>
         </h2>
@@ -74,6 +74,7 @@ export default function Stack () {
             {Array.from({ length: bulletCount }).map((_, i) => (
               <button
                 key={i}
+                aria-label={`Ir a la diapositiva ${i + 1}`}
                 onClick={() => swiperRef.current?.slideTo(i)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   i === activeIndex
