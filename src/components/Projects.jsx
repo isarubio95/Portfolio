@@ -4,7 +4,7 @@ export default function Projects() {
     { id: 2, title: '37Grams.', desc: 'Página para un profesor de inglés, con temática en blanco y negro.', image: '/37grams.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://thirtysevengrams.com/' },
     { id: 3, title: 'Shamrock', desc: 'Landing page para academia de inglés en Logroño. Media de 97 en Lighthouse.', image: '/shamrock.png', tech: ['HTML', 'CSS', 'JS', 'PHP'], link: 'https://shamrockenglishsolutions.es/' },
     { id: 4, title: 'Cartas Pokemon', desc: 'Minijuego de cartas pokémon recogidas de la PokéAPI.', image: '/cartasPokemon.png', tech: ['HTML', 'CSS', 'JS'], link: 'https://github.com/isarubio95/Cartas-Pokemon' },
-    { id: 4, title: 'Fichajes', desc: 'Aplicación web para fichar entradas y salidas de los empleados y generar informes.', image: '/appFichar.png', tech: ['PHP', 'SQL'], link: 'https://github.com/isarubio95/App-Fichar' },
+    { id: 5, title: 'Fichajes', desc: 'Aplicación web para fichar entradas y salidas de los empleados y generar informes.', image: '/appFichar.png', tech: ['PHP', 'SQL'], link: 'https://github.com/isarubio95/App-Fichar' },
     { id: 6, title: 'Manos Al Barro', desc: 'Trabajo para DAW, centrado en la accesibilidad, navegabilidad y usabilidad.', image: '/manosAlBarro.png', tech: ['HTML', 'CSS', 'JS', 'BootStrap'], link: 'https://github.com/isarubio95/Manos-al-Barro' },
   ]
 

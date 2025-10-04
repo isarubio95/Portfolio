@@ -3,7 +3,7 @@ import { FiArrowUpRight } from 'react-icons/fi'
 
 export default function Hero() {
   return (
-    <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 h-[85vh] sm:h-screen flex flex-col sm:flex-row justify-center items-center sm:gap-6 gap-4 ">
+    <section id='inicio' className="bg-gradient-to-b from-gray-100 to-gray-300 h-[85vh] sm:h-[92vh] flex flex-col sm:flex-row justify-center items-center sm:gap-6 gap-4 ">
       {/* Imagen */}
       <div className='max-w-5xl mx-auto sm:mx-0 w-5/6 sm:w-5/12 min-w-[307px] short:hidden flex justify-center md:justify-end'>
         <div className='sm:h-64 sm:w-64 bg-gray-700 aspect-square flex justify-center sm:items-end rounded-full'>
